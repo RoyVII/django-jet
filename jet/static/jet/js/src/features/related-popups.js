@@ -42,7 +42,7 @@ RelatedPopups.prototype = {
                 $link.on('click', function(e) {
                     e.preventDefault();
 
-                    var href = $link.attr('href');
+                    var href = $(this).attr('href');
 
                     if (href != undefined) {
                         if (href.indexOf('_popup') == -1) {
