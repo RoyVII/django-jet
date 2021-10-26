@@ -53,6 +53,7 @@
             <span id="branding-pin" class="sidebar-link-icon icon-pin sidebar-pin"></span>
             {% block branding %}{% endblock %}
         </div>
+        
         {% block usertools %}
         {% if user.is_active and user.is_staff or has_permission %}
         <div id="user-tools">
@@ -64,8 +65,8 @@
                 <a href="{% url 'admin:index' %}">{% trans 'Dashboard' %}</a> /
                 <a href="{% url 'profile' %}">{% trans 'Profile' %}</a> /
                 {% if user.is_superuser %}
-                <a href="/dashboard/approvals/">Pending approvals</a> /
-                <a href="/admin/">Admin site</a> /
+                <a href="/dashboard/approvals/">Admin: Pending approvals</a> /
+                <a href="/admin/">Admin: admin site</a> /
                 {% endif %}
                 {% if user.is_active and user.is_staff %}
                     {% url 'django-admindocs-docroot' as docsroot %}
@@ -82,15 +83,7 @@
         {% endif %}
         {% endblock %}
 
-        {% if request.path != '/dashboard/'%} 
-        <div style="float: right; overflow: hidden; padding-top: 11px; padding-right: 210px;">
-        {% else %}
-         <div style="float: right; overflow: hidden; padding-top: 11px; padding-right: 460px;">
-        {% endif %}
-            <form method='GET' class='' action='/dashboard/search/.'>
-            <input class="select2-search__field" type="text" size="20" name="q" value="" autofocus="" placeholder="Search">
-            </form>
-        </div>
+        
         
 
     </div>
@@ -182,6 +175,11 @@
         </div>
         <div class="sidebar sidebar-dependent">
             <div class="sidebar-wrapper scrollable">
+                <div class="sidebar-section" style="padding-left: 20px; padding-top: 10px">
+                    <form method='GET' action='/dashboard/search/.'>
+                        <input class="select2-search__field" type="text" size="28" name="q" value="" placeholder="Search">
+                    </form>
+                </div>
                 <div class="sidebar-section">                    
                         <a href="{% url 'home-index' %}" class="sidebar-link icon">
                             <span class="sidebar-link-label">
@@ -194,12 +192,6 @@
                             <span class="sidebar-link-label">
                                 <span class="sidebar-link-icon icon-data"></span>
                                 {% trans 'Dashboard' %}
-                            </span>
-                        </a>
-                        <a href="{% url 'profile' %}" class="sidebar-link icon">
-                            <span class="sidebar-link-label">
-                                <span class="sidebar-link-icon icon-user"></span>
-                                {% trans 'Your profile' %}
                             </span>
                         </a>
                     {% endif %}
