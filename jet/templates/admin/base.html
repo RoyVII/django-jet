@@ -177,14 +177,14 @@
             <div class="sidebar-wrapper scrollable">
                 <div class="sidebar-section" style="padding-left: 20px; padding-top: 10px">
                     <form method='GET' action='/dashboard/search/.'>
-                        <input class="select2-search__field" type="text" size="28" name="q" value="" placeholder="Search">
+                        <input class="select2-search__field" type="text" size="28" name="q" value="{{ search_term }}" placeholder="Search">
                     </form>
                 </div>
                 <div class="sidebar-section">                    
                         <a href="{% url 'home-index' %}" class="sidebar-link icon">
                             <span class="sidebar-link-label">
                                 <span class="sidebar-link-icon icon-open-external"></span>
-                                {% trans 'Home' %}
+                                {% trans 'Landing page' %}
                             </span>
                         </a>
                     {% if user.is_active and user.is_staff %}
