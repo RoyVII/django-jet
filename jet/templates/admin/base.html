@@ -208,7 +208,7 @@
                     {% block nav-global %}{% endblock %}
                 </div>
 
-                {% if user.is_active and user.is_staff %}
+                {% if user.is_active %}
                     {% jet_get_menu as app_list %}
                     {% if SIDE_MENU_COMPACT %}
                         {% for app in app_list %}
@@ -222,11 +222,11 @@
                                     {% for model in app.items %}
                                         {% if model.has_perms %}
                                             <div>
-                                                <a{% if model.url %} href="{{ model.url }}"{% endif %} class="sidebar-link"{% if model.url_blank %} target="_blank"{% endif %}>
+                                                <a{% if model.url %} href="{{ model.url }}"{% endif %} class="sidebar-link"{% if model.url_blank %} target="_blank"{% endif %} {% if request.path == model.url %}style="color:white;font-weight: bold"{% endif %}>
                                                     <span class="sidebar-right">
                                                         <span class="sidebar-right-arrow icon-arrow-right"></span>
                                                     </span>
-                                                    <span class="sidebar-link-label">{{ model.label }}</span>
+                                                    <span class="sidebar-link-label" >{{ model.label }}</span>
                                                 </a>
                                             </div>
                                         {% endif %}
