@@ -188,7 +188,7 @@
                             </span>
                         </a>
                     {% if user.is_active and user.is_staff %}
-                        <a href="{% url 'admin:index' %}" class="sidebar-link icon">
+                        <a href="{% url 'admin:index' %}" class="sidebar-link icon" {% if request.path == '/dashboard/' %}style="color:white;font-weight: bold"{% endif %}>
                             <span class="sidebar-link-label">
                                 <span class="sidebar-link-icon icon-data"></span>
                                 {% trans 'Dashboard' %}
@@ -215,7 +215,7 @@
                             {% if app.has_perms %}
                                 <div class="sidebar-section">
                                     <div class="sidebar-title">
-                                        <a{% if app.url %} href="{{ app.url }}"{% endif %} class="sidebar-title-link"{% if app.url_blank %} target="_blank"{% endif %}>
+                                        <a{% if app.url %} href="{{ app.url }}"{% endif %} class="sidebar-title-link"{% if app.url_blank %} target="_blank"{% endif %} {% if request.path == app.url %}style="color:white;font-weight: bold"{% endif %}>
                                             {{ app.label }}
                                         </a>
                                     </div>
