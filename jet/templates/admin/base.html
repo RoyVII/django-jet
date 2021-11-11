@@ -229,6 +229,172 @@
                                                     <span class="sidebar-link-label" >{{ model.label }}</span>
                                                 </a>
                                             </div>
+                                            {% if '/dashboard/modules/action' in request.path and '/dashboard/modules/action' in model.url %}
+                                                <div>
+
+                                                    <a href="/dashboard/modules/action_fooddeprivationlog/" class="sidebar-link" {% if request.path == '/dashboard/modules/action_fooddeprivationlog/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Food Deprivation log</span>
+                                                    </a>
+                                                </div>
+
+                                                <div>
+                                                    <a href="/dashboard/modules/action_opticfiberimplant/" class="sidebar-link" {% if request.path == '/dashboard/modules/action_opticfiberimplant/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Optic fiber implant</span>
+                                                    </a>
+                                                </div>
+
+                                                <div>
+                                                    <a href="/dashboard/modules/action_singlewireelectrode/" class="sidebar-link" {% if request.path == '/dashboard/modules/action_singlewireelectrode/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Single wire electrode</span>
+                                                    </a>
+                                                </div>
+
+                                                <div>
+                                                    <a href="/dashboard/modules/action_siliconprobeimplant/" class="sidebar-link" {% if request.path == '/dashboard/modules/action_siliconprobeimplant/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Silicon probe implants</span>
+                                                    </a>
+                                                </div>
+
+                                                <div>
+                                                    <a href="/dashboard/modules/action_tetrodewireelectrode/" class="sidebar-link" {% if request.path == '/dashboard/modules/action_tetrodewireelectrode/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Tetrode wire electrode</span>
+                                                    </a>
+                                                </div>
+
+                                                <div>
+                                                    <a href="/dashboard/modules/action_virusinjection/" class="sidebar-link" {% if request.path == '/dashboard/modules/action_virusinjection/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Virus injection</span>
+                                                    </a>
+                                                </div>
+
+                                                <div>
+                                                    <a href="/dashboard/modules/action_waterdeprivationlog/" class="sidebar-link" {% if request.path == '/dashboard/modules/action_waterdeprivationlog/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Water deprivation log</span>
+                                                    </a>
+                                                </div>
+
+                                                <div>
+                                                    <a href="/dashboard/modules/action_weighinglog/" class="sidebar-link" {% if request.path == '/dashboard/modules/action_weighinglog/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Weighing log</span>
+                                                    </a>
+                                                </div>
+                                            {% endif %}
+
+                                            {% if '/dashboard/modules/experimentdata' in request.path and '/dashboard/modules/experimentdata' in model.url %}
+                                                <div>
+
+                                                    <a href="/dashboard/modules/experimentdata_audio/" class="sidebar-link" {% if request.path == '/dashboard/modules/experimentdata_audio/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Audio</span>
+                                                    </a>
+                                                </div>
+
+                                                <div>
+                                                    <a href="/dashboard/modules/experimentdata_behavioraltracking/" class="sidebar-link" {% if request.path == '/dashboard/modules/experimentdata_behavioraltracking/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Behavioral tracking</span>
+                                                    </a>
+                                                </div>
+
+                                                <div>
+                                                    <a href="/dashboard/modules/experimentdata_electroneurogram/" class="sidebar-link" {% if request.path == '/dashboard/modules/experimentdata_electroneurogram/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Electroneurogram</span>
+                                                    </a>
+                                                </div>
+
+                                                <div>
+                                                    <a href="/dashboard/modules/experimentdata_extracellular/" class="sidebar-link" {% if request.path == '/dashboard/modules/experimentdata_extracellular/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Extracellular</span>
+                                                    </a>
+                                                </div>
+
+                                                <div>
+                                                    <a href="/dashboard/modules/experimentdata_generaltimeseries/" class="sidebar-link" {% if request.path == '/dashboard/modules/experimentdata_generaltimeseries/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;General time-series</span>
+                                                    </a>
+                                                </div>
+
+                                                <div>
+                                                    <a href="/dashboard/modules/experimentdata_intracellular/" class="sidebar-link" {% if request.path == '/dashboard/modules/experimentdata_intracellular/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Intracellular</span>
+                                                    </a>
+                                                </div>
+                                            {% endif %}
+
+                                            {% if '/dashboard/modules/manipulation' in request.path and '/dashboard/modules/manipulation' in model.url %}
+                                                <div>
+
+                                                    <a href="/dashboard/modules/manipulation_electromagneticfieldstimulation/" class="sidebar-link" {% if request.path == '/dashboard/modules/manipulation_electromagneticfieldstimulation/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Electromagnetic field stimulation</span>
+                                                    </a>
+                                                </div>
+
+                                                <div>
+                                                    <a href="/dashboard/modules/manipulation_electricalstimulation/" class="sidebar-link" {% if request.path == '/dashboard/modules/manipulation_electricalstimulation/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Electrical stimulation</span>
+                                                    </a>
+                                                </div>
+
+                                                <div>
+                                                    <a href="/dashboard/modules/manipulation_liquidperturbation/" class="sidebar-link" {% if request.path == '/dashboard/modules/manipulation_liquidperturbation/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Liquid perturbation</span>
+                                                    </a>
+                                                </div>
+
+                                                <div>
+                                                    <a href="/dashboard/modules/manipulation_microperfusion/" class="sidebar-link" {% if request.path == '/dashboard/modules/manipulation_microperfusion/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Micro perfusion</span>
+                                                    </a>
+                                                </div>
+
+                                                <div>
+                                                    <a href="/dashboard/modules/manipulation_optogeneticalstimulation/" class="sidebar-link" {% if request.path == '/dashboard/modules/manipulation_optogeneticalstimulation/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Optogenetical stimulation</span>
+                                                    </a>
+                                                </div>
+
+                                                <div>
+                                                    <a href="/dashboard/modules/manipulation_pharmacologicalinhalation/" class="sidebar-link" {% if request.path == '/dashboard/modules/manipulation_pharmacologicalinhalation/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Pharmacological inhalation</span>
+                                                    </a>
+                                                </div>
+
+                                                <div>
+
+                                                    <a href="/dashboard/modules/manipulation_pharmacologicalinjection/" class="sidebar-link" {% if request.path == '/dashboard/modules/manipulation_pharmacologicalinjection/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Pharmacological injection</span>
+                                                    </a>
+                                                </div>
+
+                                                <div>
+                                                    <a href="/dashboard/modules/manipulation_pharmacologicalsuperfusion/" class="sidebar-link" {% if request.path == '/dashboard/modules/manipulation_pharmacologicalsuperfusion/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Pharmacological superfusion</span>
+                                                    </a>
+                                                </div>
+
+                                                <div>
+                                                    <a href="/dashboard/modules/manipulation_soundstimulation/" class="sidebar-link" {% if request.path == '/dashboard/modules/manipulation_soundstimulation/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Sound stimulation</span>
+                                                    </a>
+                                                </div>
+
+                                                <div>
+                                                    <a href="/dashboard/modules/manipulation_thermalperturbation/" class="sidebar-link" {% if request.path == '/dashboard/modules/manipulation_thermalperturbation/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Thermal perturbation</span>
+                                                    </a>
+                                                </div>
+
+                                                <div>
+                                                    <a href="/dashboard/modules/manipulation_transcranialelectricalstimulation/" class="sidebar-link" {% if request.path == '/dashboard/modules/manipulation_transcranialelectricalstimulation/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Transcranial electrical stimulation</span>
+                                                    </a>
+                                                </div>
+
+                                                <div>
+                                                    <a href="/dashboard/modules/manipulation_ultrasoundstimulation/" class="sidebar-link" {% if request.path == '/dashboard/modules/manipulation_ultrasoundstimulation/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Ultra Sound Stimulation</span>
+                                                    </a>
+                                                </div>
+                                            {% endif %}
+
                                         {% endif %}
                                     {% endfor %}
                                 </div>
