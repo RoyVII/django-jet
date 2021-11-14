@@ -395,6 +395,32 @@
                                                 </div>
                                             {% endif %}
 
+                                            {% if '/dashboard/resources/consumable' in request.path and '/dashboard/resources/consumable' in model.url %}
+                                                <div>
+                                                    <a href="/dashboard/resources/consumable_opticfiberdesign/" class="sidebar-link" {% if request.path == '/dashboard/resources/consumable_opticfiberdesign/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Optic fiber designs</span>
+                                                    </a>
+                                                </div>
+
+                                                <div>
+                                                    <a href="/dashboard/resources/consumable_siliconprobedesign/" class="sidebar-link" {% if request.path == '/dashboard/resources/consumable_siliconprobedesign/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Silicon probe designs</span>
+                                                    </a>
+                                                </div>
+
+                                                <div>
+                                                    <a href="/dashboard/resources/consumable_virusconstruct/" class="sidebar-link" {% if request.path == '/dashboard/resources/consumable_virusconstruct/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Virus constructs</span>
+                                                    </a>
+                                                </div>
+
+                                                <div>
+                                                    <a href="/dashboard/resources/consumable_wireelectrode/" class="sidebar-link" {% if request.path == '/dashboard/resources/consumable_wireelectrode/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Wire electrodes</span>
+                                                    </a>
+                                                </div>
+                                            {% endif %}
+
                                         {% endif %}
                                     {% endfor %}
                                 </div>
