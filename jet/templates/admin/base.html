@@ -42,6 +42,9 @@
 <body class="{% if request.COOKIES.sidebar_pinned != 'false' %}menu-pinned {% endif %}{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}"
   data-admin-utc-offset="{% now "Z" %}">
 
+
+{% url 'admin:index' as admin_url %}
+
 <!-- Container -->
 <div id="container">
 
@@ -66,7 +69,7 @@
                 <a href="{% url 'profile' %}">{% trans 'Profile' %}</a> /
                 {% if user.is_superuser %}
                 <a href="/dashboard/approvals/">Admin: Pending approvals</a> /
-                <a href="/admin/">Admin: admin site</a> /
+                <a href="{% url 'super_admin:index' %}">Admin: admin site</a> /
                 {% endif %}
                 {% if user.is_active and user.is_staff %}
                     {% url 'django-admindocs-docroot' as docsroot %}
@@ -176,7 +179,7 @@
         <div class="sidebar sidebar-dependent">
             <div class="sidebar-wrapper scrollable">
                 <div class="sidebar-section" style="padding-left: 20px; padding-top: 10px">
-                    <form method='GET' action='/dashboard/search/.'>
+                    <form method='GET' action='{{ admin_url }}search/.'>
                         <input class="select2-search__field" type="text" size="28" name="q" value="{{ search_term }}" placeholder="Search">
                     </form>
                 </div>
@@ -188,7 +191,7 @@
                             </span>
                         </a>
                     {% if user.is_active and user.is_staff %}
-                        <a href="{% url 'admin:index' %}" class="sidebar-link icon" {% if request.path == '/dashboard/' %}style="color:white;font-weight: bold"{% endif %}>
+                        <a href="{% url 'admin:index' %}" class="sidebar-link icon" {% if request.path == admin_url %}style="color:white;font-weight: bold"{% endif %}>
                             <span class="sidebar-link-label">
                                 <span class="sidebar-link-icon icon-data"></span>
                                 {% trans 'Dashboard' %}
@@ -222,205 +225,13 @@
                                     {% for model in app.items %}
                                         {% if model.has_perms %}
                                             <div>
-                                                <a{% if model.url %} href="{{ model.url }}"{% endif %} class="sidebar-link"{% if model.url_blank %} target="_blank"{% endif %} {% if request.path == model.url %}style="color:white;font-weight: bold"{% endif %}>
+                                                <a{% if model.url %} href="{{ model.url }}"{% endif %} class="sidebar-link"{% if model.url_blank %} target="_blank"{% endif %} {% if model.url in request.path %}style="color:white;font-weight: bold"{% endif %}>
                                                     <span class="sidebar-right">
                                                         <span class="sidebar-right-arrow icon-arrow-right"></span>
                                                     </span>
                                                     <span class="sidebar-link-label" >{{ model.label }}</span>
                                                 </a>
                                             </div>
-                                            {% if '/dashboard/modules/action' in request.path and '/dashboard/modules/action' in model.url %}
-                                                <div>
-
-                                                    <a href="/dashboard/modules/action_fooddeprivationlog/" class="sidebar-link" {% if request.path == '/dashboard/modules/action_fooddeprivationlog/' %}style="color:white;font-weight: bold"{% endif %}>
-                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Food Deprivation logs</span>
-                                                    </a>
-                                                </div>
-
-                                                <div>
-                                                    <a href="/dashboard/modules/action_opticfiberimplant/" class="sidebar-link" {% if request.path == '/dashboard/modules/action_opticfiberimplant/' %}style="color:white;font-weight: bold"{% endif %}>
-                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Optic fiber implants</span>
-                                                    </a>
-                                                </div>
-
-                                                <div>
-                                                    <a href="/dashboard/modules/action_singlewireelectrode/" class="sidebar-link" {% if request.path == '/dashboard/modules/action_singlewireelectrode/' %}style="color:white;font-weight: bold"{% endif %}>
-                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Single wire electrodes</span>
-                                                    </a>
-                                                </div>
-
-                                                <div>
-                                                    <a href="/dashboard/modules/action_siliconprobeimplant/" class="sidebar-link" {% if request.path == '/dashboard/modules/action_siliconprobeimplant/' %}style="color:white;font-weight: bold"{% endif %}>
-                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Silicon probe implants</span>
-                                                    </a>
-                                                </div>
-
-                                                <div>
-                                                    <a href="/dashboard/modules/action_tetrodewireelectrode/" class="sidebar-link" {% if request.path == '/dashboard/modules/action_tetrodewireelectrode/' %}style="color:white;font-weight: bold"{% endif %}>
-                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Tetrode wire electrodes</span>
-                                                    </a>
-                                                </div>
-
-                                                <div>
-                                                    <a href="/dashboard/modules/action_virusinjection/" class="sidebar-link" {% if request.path == '/dashboard/modules/action_virusinjection/' %}style="color:white;font-weight: bold"{% endif %}>
-                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Virus injections</span>
-                                                    </a>
-                                                </div>
-
-                                                <div>
-                                                    <a href="/dashboard/modules/action_waterdeprivationlog/" class="sidebar-link" {% if request.path == '/dashboard/modules/action_waterdeprivationlog/' %}style="color:white;font-weight: bold"{% endif %}>
-                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Water deprivation logs</span>
-                                                    </a>
-                                                </div>
-
-                                                <div>
-                                                    <a href="/dashboard/modules/action_weighinglog/" class="sidebar-link" {% if request.path == '/dashboard/modules/action_weighinglog/' %}style="color:white;font-weight: bold"{% endif %}>
-                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Weighing logs</span>
-                                                    </a>
-                                                </div>
-                                            {% endif %}
-
-                                            {% if '/dashboard/modules/experimentdata' in request.path and '/dashboard/modules/experimentdata' in model.url %}
-                                                <div>
-
-                                                    <a href="/dashboard/modules/experimentdata_audio/" class="sidebar-link" {% if request.path == '/dashboard/modules/experimentdata_audio/' %}style="color:white;font-weight: bold"{% endif %}>
-                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Audio</span>
-                                                    </a>
-                                                </div>
-
-                                                <div>
-                                                    <a href="/dashboard/modules/experimentdata_behavioraltracking/" class="sidebar-link" {% if request.path == '/dashboard/modules/experimentdata_behavioraltracking/' %}style="color:white;font-weight: bold"{% endif %}>
-                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Behavioral tracking</span>
-                                                    </a>
-                                                </div>
-
-                                                <div>
-                                                    <a href="/dashboard/modules/experimentdata_electroneurogram/" class="sidebar-link" {% if request.path == '/dashboard/modules/experimentdata_electroneurogram/' %}style="color:white;font-weight: bold"{% endif %}>
-                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Electroneurograms</span>
-                                                    </a>
-                                                </div>
-
-                                                <div>
-                                                    <a href="/dashboard/modules/experimentdata_extracellular/" class="sidebar-link" {% if request.path == '/dashboard/modules/experimentdata_extracellular/' %}style="color:white;font-weight: bold"{% endif %}>
-                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Extracellular</span>
-                                                    </a>
-                                                </div>
-
-                                                <div>
-                                                    <a href="/dashboard/modules/experimentdata_generaltimeseries/" class="sidebar-link" {% if request.path == '/dashboard/modules/experimentdata_generaltimeseries/' %}style="color:white;font-weight: bold"{% endif %}>
-                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;General time-series</span>
-                                                    </a>
-                                                </div>
-
-                                                <div>
-                                                    <a href="/dashboard/modules/experimentdata_intracellular/" class="sidebar-link" {% if request.path == '/dashboard/modules/experimentdata_intracellular/' %}style="color:white;font-weight: bold"{% endif %}>
-                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Intracellular</span>
-                                                    </a>
-                                                </div>
-                                            {% endif %}
-
-                                            {% if '/dashboard/modules/manipulation' in request.path and '/dashboard/modules/manipulation' in model.url %}
-                                                <div>
-
-                                                    <a href="/dashboard/modules/manipulation_electromagneticfieldstimulation/" class="sidebar-link" {% if request.path == '/dashboard/modules/manipulation_electromagneticfieldstimulation/' %}style="color:white;font-weight: bold"{% endif %}>
-                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Electromagnetic field stimulations</span>
-                                                    </a>
-                                                </div>
-
-                                                <div>
-                                                    <a href="/dashboard/modules/manipulation_electricalstimulation/" class="sidebar-link" {% if request.path == '/dashboard/modules/manipulation_electricalstimulation/' %}style="color:white;font-weight: bold"{% endif %}>
-                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Electrical stimulations</span>
-                                                    </a>
-                                                </div>
-
-                                                <div>
-                                                    <a href="/dashboard/modules/manipulation_liquidperturbation/" class="sidebar-link" {% if request.path == '/dashboard/modules/manipulation_liquidperturbation/' %}style="color:white;font-weight: bold"{% endif %}>
-                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Liquid perturbations</span>
-                                                    </a>
-                                                </div>
-
-                                                <div>
-                                                    <a href="/dashboard/modules/manipulation_microperfusion/" class="sidebar-link" {% if request.path == '/dashboard/modules/manipulation_microperfusion/' %}style="color:white;font-weight: bold"{% endif %}>
-                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Micro perfusions</span>
-                                                    </a>
-                                                </div>
-
-                                                <div>
-                                                    <a href="/dashboard/modules/manipulation_optogeneticalstimulation/" class="sidebar-link" {% if request.path == '/dashboard/modules/manipulation_optogeneticalstimulation/' %}style="color:white;font-weight: bold"{% endif %}>
-                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Optogenetical stimulations</span>
-                                                    </a>
-                                                </div>
-
-                                                <div>
-                                                    <a href="/dashboard/modules/manipulation_pharmacologicalinhalation/" class="sidebar-link" {% if request.path == '/dashboard/modules/manipulation_pharmacologicalinhalation/' %}style="color:white;font-weight: bold"{% endif %}>
-                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Pharmacological inhalations</span>
-                                                    </a>
-                                                </div>
-
-                                                <div>
-
-                                                    <a href="/dashboard/modules/manipulation_pharmacologicalinjection/" class="sidebar-link" {% if request.path == '/dashboard/modules/manipulation_pharmacologicalinjection/' %}style="color:white;font-weight: bold"{% endif %}>
-                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Pharmacological injections</span>
-                                                    </a>
-                                                </div>
-
-                                                <div>
-                                                    <a href="/dashboard/modules/manipulation_pharmacologicalsuperfusion/" class="sidebar-link" {% if request.path == '/dashboard/modules/manipulation_pharmacologicalsuperfusion/' %}style="color:white;font-weight: bold"{% endif %}>
-                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Pharmacological superfusions</span>
-                                                    </a>
-                                                </div>
-
-                                                <div>
-                                                    <a href="/dashboard/modules/manipulation_soundstimulation/" class="sidebar-link" {% if request.path == '/dashboard/modules/manipulation_soundstimulation/' %}style="color:white;font-weight: bold"{% endif %}>
-                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Sound stimulations</span>
-                                                    </a>
-                                                </div>
-
-                                                <div>
-                                                    <a href="/dashboard/modules/manipulation_thermalperturbation/" class="sidebar-link" {% if request.path == '/dashboard/modules/manipulation_thermalperturbation/' %}style="color:white;font-weight: bold"{% endif %}>
-                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Thermal perturbations</span>
-                                                    </a>
-                                                </div>
-
-                                                <div>
-                                                    <a href="/dashboard/modules/manipulation_transcranialelectricalstimulation/" class="sidebar-link" {% if request.path == '/dashboard/modules/manipulation_transcranialelectricalstimulation/' %}style="color:white;font-weight: bold"{% endif %}>
-                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Transcranial electrical stimulations</span>
-                                                    </a>
-                                                </div>
-
-                                                <div>
-                                                    <a href="/dashboard/modules/manipulation_ultrasoundstimulation/" class="sidebar-link" {% if request.path == '/dashboard/modules/manipulation_ultrasoundstimulation/' %}style="color:white;font-weight: bold"{% endif %}>
-                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Ultra Sound Stimulations</span>
-                                                    </a>
-                                                </div>
-                                            {% endif %}
-
-                                            {% if '/dashboard/resources/consumable' in request.path and '/dashboard/resources/consumable' in model.url %}
-                                                <div>
-                                                    <a href="/dashboard/resources/consumable_opticfiberdesign/" class="sidebar-link" {% if request.path == '/dashboard/resources/consumable_opticfiberdesign/' %}style="color:white;font-weight: bold"{% endif %}>
-                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Optic fiber designs</span>
-                                                    </a>
-                                                </div>
-
-                                                <div>
-                                                    <a href="/dashboard/resources/consumable_siliconprobedesign/" class="sidebar-link" {% if request.path == '/dashboard/resources/consumable_siliconprobedesign/' %}style="color:white;font-weight: bold"{% endif %}>
-                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Silicon probe designs</span>
-                                                    </a>
-                                                </div>
-
-                                                <div>
-                                                    <a href="/dashboard/resources/consumable_virusconstruct/" class="sidebar-link" {% if request.path == '/dashboard/resources/consumable_virusconstruct/' %}style="color:white;font-weight: bold"{% endif %}>
-                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Virus constructs</span>
-                                                    </a>
-                                                </div>
-
-                                                <div>
-                                                    <a href="/dashboard/resources/consumable_wireelectrode/" class="sidebar-link" {% if request.path == '/dashboard/resources/consumable_wireelectrode/' %}style="color:white;font-weight: bold"{% endif %}>
-                                                        <span class="sidebar-link-label" >&nbsp;&nbsp;Wire electrodes</span>
-                                                    </a>
-                                                </div>
-                                            {% endif %}
-
                                         {% endif %}
                                     {% endfor %}
                                 </div>
