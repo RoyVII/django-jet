@@ -72,8 +72,7 @@
                 <a href="/private/">{% trans 'Dashboard' %}</a> /
                 <a href="{% url 'profile' %}">{% trans 'Profile' %}</a> /
                 {% if user.is_superuser %}
-                <a href="/private/approvals/">Pending approvals</a> /
-                <a href="/super/">Super user site</a> /
+                <a href="/super/">Super admin site</a> /
                 {% endif %}
                 {% if user.is_active and user.is_staff %}
                     {% url 'django-admindocs-docroot' as docsroot %}
@@ -89,7 +88,6 @@
         </div>
         {% endif %}
         {% endblock %}
-
 
     </div>
     <!-- END Header -->
@@ -206,6 +204,8 @@
                                 Private
                             </span>
                         </a>
+                </div>
+                <div class="sidebar-section">
                         <a href="" class="sidebar-link icon" style="color:white;font-weight: bold">
                             <span class="sidebar-link-label">
                                 <span class="sidebar-link-icon icon-book"></span>
@@ -228,6 +228,8 @@
                                 Private data
                             </span>
                         </a>
+                </div>
+                <div class="sidebar-section">
                         <a href="" class="sidebar-link icon" style="color:white;font-weight: bold">
                             <span class="sidebar-link-label">
                                 <span class="sidebar-link-icon icon-book"></span>
@@ -249,6 +251,8 @@
                                 Public data
                             </span>
                         </a>
+                </div>
+                <div class="sidebar-section">
                         <a href="" class="sidebar-link icon" style="color:white;font-weight: bold">
                             <span class="sidebar-link-label">
                                 <span class="sidebar-link-icon icon-edit"></span>
@@ -621,6 +625,7 @@
         </div>
     {% endif %}
 
+    {% if admin_url == '/private/' %}
     {% jet_get_themes as THEMES %}
     {% if THEMES %}
         <li class="user-tools-contrast-block theme-chooser">
@@ -643,6 +648,7 @@
                 {% endspaceless %}
             </div>
         </li>
+    {% endif %}
     {% endif %}
 </div>
 <!-- END Container -->
