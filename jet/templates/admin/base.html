@@ -22,6 +22,14 @@
 <link rel="stylesheet" type="text/css" href="{% static "jet/css/themes/"|add:admin_url|add:"/jquery-ui.theme.css" as url %}{{ url|jet_append_version }}" class="jquery-ui-stylesheet" />
 {% endif %}
 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H1QQF8G60D"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-H1QQF8G60D');
+    </script>
+
 {% block extrastyle %}{% endblock %}
 {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}" />{% endif %}
 {% jet_get_date_format as date_format %}
