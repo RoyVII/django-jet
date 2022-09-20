@@ -312,14 +312,35 @@
                                                 <span class="sidebar-link-label" >{{ model.label }}</span>
                                             </a>
                                         </div>
-                                        {% if '/private/modules/action' in request.path and '/private/modules/action' in model.url %}
+                                        {% if '/private/modules/actionlog' in request.path and '/private/modules/actionlog' in model.url%}
                                             <div>
-
-                                                <a href="/private/modules/action_fooddeprivationlog/" class="sidebar-link" {% if request.path == '/private/modules/action_fooddeprivationlog/' %}style="color:white;font-weight: bold"{% endif %}>
-                                                    <span class="sidebar-link-label" >&nbsp;&nbsp;Food Deprivation logs</span>
+                                                <a href="/private/modules/actionlog_impedances/" class="sidebar-link" {% if request.path == '/private/modules/actionlog_impedances/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                    <span class="sidebar-link-label" >&nbsp;&nbsp;Impedances</span>
+                                                </a>
+                                            </div>
+                                            <div>
+                                                <a href="/private/modules/actionlog_lineardisplacement/" class="sidebar-link" {% if request.path == '/private/modules/actionlog_lineardisplacement/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                    <span class="sidebar-link-label" >&nbsp;&nbsp;Linear displacements</span>
                                                 </a>
                                             </div>
 
+                                        {% elif '/private/modules/subjectlog' in request.path and '/private/modules/subjectlog' in model.url %}
+                                            <div>
+                                                <a href="/private/modules/subjectlog_foodconsumption/" class="sidebar-link" {% if request.path == '/private/modules/subjectlog_foodconsumption/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                    <span class="sidebar-link-label" >&nbsp;&nbsp;Food Consumptions</span>
+                                                </a>
+                                            </div>
+                                            <div>
+                                                <a href="/private/modules/subjectlog_weighing/" class="sidebar-link" {% if request.path == '/private/modules/subjectlog_weighing/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                    <span class="sidebar-link-label" >&nbsp;&nbsp;Weighing</span>
+                                                </a>
+                                            </div>
+                                            <div>
+                                                <a href="/private/modules/subjectlog_waterconsumption/" class="sidebar-link" {% if request.path == '/private/modules/subjectlog_waterconsumption/' %}style="color:white;font-weight: bold"{% endif %}>
+                                                    <span class="sidebar-link-label" >&nbsp;&nbsp;Water Consumptions</span>
+                                                </a>
+                                            </div>                                            
+                                        {% elif '/private/modules/action' in request.path and '/private/modules/action' in model.url and not '/private/modules/actionlog' in request.path and not '/private/modules/actionlog' in model.url %}
                                             <div>
                                                 <a href="/private/modules/action_opticfiberimplant/" class="sidebar-link" {% if request.path == '/private/modules/action_opticfiberimplant/' %}style="color:white;font-weight: bold"{% endif %}>
                                                     <span class="sidebar-link-label" >&nbsp;&nbsp;Optic fiber implants</span>
@@ -349,21 +370,7 @@
                                                     <span class="sidebar-link-label" >&nbsp;&nbsp;Virus injections</span>
                                                 </a>
                                             </div>
-
-                                            <div>
-                                                <a href="/private/modules/action_waterdeprivationlog/" class="sidebar-link" {% if request.path == '/private/modules/action_waterdeprivationlog/' %}style="color:white;font-weight: bold"{% endif %}>
-                                                    <span class="sidebar-link-label" >&nbsp;&nbsp;Water deprivation logs</span>
-                                                </a>
-                                            </div>
-
-                                            <div>
-                                                <a href="/private/modules/action_weighinglog/" class="sidebar-link" {% if request.path == '/private/modules/action_weighinglog/' %}style="color:white;font-weight: bold"{% endif %}>
-                                                    <span class="sidebar-link-label" >&nbsp;&nbsp;Weighing logs</span>
-                                                </a>
-                                            </div>
-                                        {% endif %}
-
-                                        {% if '/private/modules/experimentdata' in request.path and '/private/modules/experimentdata' in model.url %}
+                                        {% elif '/private/modules/experimentdata/' in request.path and '/private/modules/experimentdata/' in model.url %}
                                             <div>
 
                                                 <a href="/private/modules/experimentdata_audio/" class="sidebar-link" {% if request.path == '/private/modules/experimentdata_audio/' %}style="color:white;font-weight: bold"{% endif %}>
@@ -400,9 +407,7 @@
                                                     <span class="sidebar-link-label" >&nbsp;&nbsp;Intracellular</span>
                                                 </a>
                                             </div>
-                                        {% endif %}
-
-                                        {% if '/private/modules/manipulation' in request.path and '/private/modules/manipulation' in model.url %}
+                                        {% elif '/private/modules/manipulation' in request.path and '/private/modules/manipulation' in model.url %}
                                             <div>
 
                                                 <a href="/private/modules/manipulation_electromagneticfieldstimulation/" class="sidebar-link" {% if request.path == '/private/modules/manipulation_electromagneticfieldstimulation/' %}style="color:white;font-weight: bold"{% endif %}>
@@ -476,9 +481,7 @@
                                                     <span class="sidebar-link-label" >&nbsp;&nbsp;Ultra Sound Stimulations</span>
                                                 </a>
                                             </div>
-                                        {% endif %}
-
-                                        {% if '/private/modules/subjectstatechange' in request.path and '/private/modules/subjectstatechange' in model.url %}
+                                        {% elif '/private/modules/subjectstatechange' in request.path and '/private/modules/subjectstatechange' in model.url %}
                                             <div>
                                                 <a href="/private/modules/subjectstatechange_death/" class="sidebar-link" {% if request.path == '/private/modules/subjectstatechange_death/' %}style="color:white;font-weight: bold"{% endif %}><span class="sidebar-link-label" >&nbsp;&nbsp;Death</span>
                                                 </a>
@@ -499,10 +502,7 @@
                                                 <a href="/private/modules/subjectstatechange_brainlesion/" class="sidebar-link" {% if request.path == '/private/modules/subjectstatechange_brainlesion/' %}style="color:white;font-weight: bold"{% endif %}><span class="sidebar-link-label" >&nbsp;&nbsp;Brain lesion</span>
                                                 </a>
                                             </div>
-
-                                        {% endif %}
-
-                                        {% if '/private/resources/consumable' in request.path and '/private/resources/consumable' in model.url %}
+                                        {% elif '/private/resources/consumable' in request.path and '/private/resources/consumable' in model.url %}
                                             <div>
                                                 <a href="/private/resources/consumable_opticfiberdesign/" class="sidebar-link" {% if request.path == '/private/resources/consumable_opticfiberdesign/' %}style="color:white;font-weight: bold"{% endif %}>
                                                     <span class="sidebar-link-label" >&nbsp;&nbsp;Optic fiber designs</span>
