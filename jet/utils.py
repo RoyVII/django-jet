@@ -29,9 +29,8 @@ from django.contrib.admin.options import IncorrectLookupParameters
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 from django.utils.text import slugify
-from django.contrib.auth import get_user_model
 
-User = get_user_model()
+from users.models.User import User
 
 
 try:
