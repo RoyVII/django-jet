@@ -339,7 +339,12 @@
                                                 <a href="/private/modules/subjectlog_waterconsumption/" class="sidebar-link" {% if '/private/modules/subjectlog_waterconsumption/' in request.path %}style="color:white;font-weight: bold"{% endif %}>
                                                     <span class="sidebar-link-label" >&nbsp;&nbsp;Water Consumptions</span>
                                                 </a>
-                                            </div>                                            
+                                            </div>
+                                            <div>
+                                                <a href="/private/modules/subjectlog_housing/" class="sidebar-link" {% if '/private/modules/subjectlog_housing/' in request.path %}style="color:white;font-weight: bold"{% endif %}>
+                                                    <span class="sidebar-link-label" >&nbsp;&nbsp;Housing</span>
+                                                </a>
+                                            </div>                                         
                                         {% elif '/private/modules/action' in request.path and '/private/modules/action' in model.url and not '/private/modules/actionlog' in request.path and not '/private/modules/actionlog' in model.url %}
                                             <div>
                                                 <a href="/private/modules/action_opticfiberimplant/" class="sidebar-link" {% if '/private/modules/action_opticfiberimplant/' in request.path %}style="color:white;font-weight: bold"{% endif %}>
