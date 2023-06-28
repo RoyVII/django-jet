@@ -304,15 +304,14 @@ ToolbarUpdater.prototype = {
     },
     moveObjectTools: function($objectTools, $section) {
         const $items = $objectTools.find('li');
-        console.log($items);
     },
 
     run: function() {
-        const $filtersLine1 = this.getDiv('changelist', 'filters-line-1');
+        const $filtersLine1 = this.getDiv('list-view__header__top', 'filters-line-1');
         const $createdFilters = this.getDiv('filters-line-1', 'created-filter');
         const $updatedFilters = this.getDiv('filters-line-1', 'updated-filter');
         const $rightBlock = this.getDiv('filters-line-1', 'right-block');
-        const $toolbar = this.getDiv('changelist', 'toolbar');
+        const $toolbar = this.getDiv('filters-line-2', 'toolbar');
         const $objectTools = $(".object-tools");
 
         try {
