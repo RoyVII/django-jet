@@ -85,6 +85,22 @@
   }
 }
 
+#changelist {
+  #filters-line-1 {
+    #created-filter, #updated-filter {
+      display: none;
+
+      &.initialized {
+        display: block;
+      }
+
+      h3, ul, li {
+        display: inline;
+      }
+    }
+  }
+}
+
 /* TOOLBAR */
 
 #toolbar {
@@ -204,7 +220,7 @@
 /* FILTER COLUMN */
 
 #changelist-filter {
-  display: none;
+  /* display: none; */
 }
 
 /* DATE DRILLDOWN */
@@ -240,7 +256,7 @@
 /* PAGINATOR */
 
 .paginator {
-  display: none;
+  /* display: none; */
   line-height: normal;
   padding: 0 !important;
   margin: 0;
