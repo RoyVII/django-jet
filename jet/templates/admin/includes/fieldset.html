@@ -1,4 +1,6 @@
-{% load jet_tags %}
+{% load jet_tags static admin_modify i18n %}
+<link rel="stylesheet" type="text/css" href="{% static '/css/help-popup.css' %}">
+
 <fieldset class="module aligned {{ fieldset.classes }}">
     {% if fieldset.name %}<h2>{{ fieldset.name }}</h2>{% endif %}
     {% if fieldset.description %}
@@ -13,15 +15,26 @@
                     {% if field.is_checkbox %}
                         {{ field.field }}{{ field.label_tag }}
                     {% else %}
+                        <div class="flex-row">
                         {{ field.label_tag }}
+                        {% if field.field.help_text %}
+                        <div class="box--end">
+                            <span class="tooltip-form-add">
+                                <img src="{% static 'icon/icon-info.svg' %}">
+                                <span class="help-text">{{ field.field.help_text }}</span>
+                            </span>
+                        </div>
+                        {% endif %}
+
+                    </div>
                         {% if field.is_readonly %}
                             <p>{{ field.contents }}</p>
                         {% else %}
                             {{ field.field|jet_select2_lookups }}
                         {% endif %}
                     {% endif %}
-                    {% if field.field.help_text %}
-                        <p class="help">{{ field.field.help_text|safe }}</p>
+                    {% if field.field.help_text and field.is_checkbox %}
+                        <p class="help1">{{ field.field.help_text|safe }}</p>
                     {% endif %}
                 </div>
             {% endfor %}
