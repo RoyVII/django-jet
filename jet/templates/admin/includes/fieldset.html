@@ -21,7 +21,7 @@
                         {% endif %}
                     {% endif %}
                     {% if field.field.help_text %}
-                        <p class="help">{{ field.field.help_text|safe }}</p>
+                        <i class="fa fa-question-circle has-tooltip tooltip-help" aria-label="{{ field.field.help_text }}"></i>
                     {% endif %}
                 </div>
             {% endfor %}
