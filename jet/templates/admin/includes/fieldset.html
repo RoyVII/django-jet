@@ -33,7 +33,7 @@
                         {% endif %}
                     {% endif %}
                     {% if field.field.help_text and field.is_checkbox %}
-                        <p class="help1">{{ field.field.help_text|safe }}</p>
+                        <i class="fa fa-question-circle has-tooltip tooltip-help" aria-label="{{ field.field.help_text|safe }}"></i>
                     {% endif %}
                 </div>
             {% endfor %}
